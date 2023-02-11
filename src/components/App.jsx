@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -14,7 +15,8 @@ export class App extends Component {
     this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
   countTotalFeedback = () => {
-    return Object.values(this.state).reduce((acc, item) => acc + item, 0);
+    const arr = Object.values(this.state);
+    return arr[0] + arr[1] + arr[2];
   };
   countPositiveFeedbackPercentage = () => {
     return this.countTotalFeedback()
@@ -27,7 +29,7 @@ export class App extends Component {
     const persentage = this.countPositiveFeedbackPercentage();
 
     return (
-      <>
+      <div className={css.container}>
         <Section title="Please live feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
@@ -43,7 +45,7 @@ export class App extends Component {
             persentage={persentage}
           />
         </Section>
-      </>
+      </div>
     );
   }
 }
