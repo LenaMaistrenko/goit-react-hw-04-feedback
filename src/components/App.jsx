@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
@@ -22,6 +22,8 @@ export function App() {
 
       case 'bad':
         setBad(prevState => prevState + 1);
+        break;
+      default:
         break;
     }
   };
